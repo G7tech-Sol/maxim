@@ -49,7 +49,12 @@ const Navbar = () => {
             <Link
               key={item}
               href="#"
-              sx={{ mx: 2, color: theme.palette.primary.main, textDecoration: "none" }}
+              sx={{
+                mx: 2,
+                color: theme.palette.primary.main,
+                textDecoration: "none",
+                fontWeight: 500,
+              }}
             >
               {item}
             </Link>

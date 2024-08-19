@@ -5,10 +5,11 @@ import Header from "@/components/Navbar";
 import HeroText from "@/components/HeroText";
 import Form from "@/components/Form";
 import Footer from "@/components/Footer";
+import ProcedureDetails from "@/components/ProcedureDetails";
 
 const MainContent = styled(Container)(({ theme }) => ({
   textAlign: "center",
-  marginTop: theme.spacing(5),
+  marginTop: theme.spacing(9),
   marginBottom: theme.spacing(8),
 }));
 
@@ -19,8 +20,8 @@ export default function Home() {
       <MainContent maxWidth="md">
         <HeroText />
         <Form />
+        <ProcedureDetails />
       </MainContent>
-
       <Footer />
     </>
   );

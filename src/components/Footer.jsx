@@ -16,7 +16,7 @@ const Footer = () => {
         <Link
           key={item}
           href="#"
-          sx={{ mx: 2, color: theme.palette.primary.main, textDecoration: "none", fontWeight: 500 }}
+          sx={{ mx: 1, color: theme.palette.primary.main, textDecoration: "none", fontWeight: 500 }}
         >
           {item}
         </Link>
