@@ -1,21 +1,111 @@
 "use client";
-import { Typography, TextField, Button, Link, Box, Grid } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { Link, Box, Grid } from "@mui/material";
+import { useState } from "react";
 import { styled } from "@mui/system";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import Heading from "./Heading";
+import Buttons from "./Button";
+import InputText from "./InputText";
+import InputTextMultiple from "./InputTextMultiple";
 
 const FormContainer = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   padding: theme.spacing(4),
   marginTop: theme.spacing(4),
   textAlign: "left",
-  maxWidth: 600,
+  maxWidth: 787,
   margin: "0 auto",
   display: "flex",
   flexDirection: "column",
   position: "relative",
 }));
 
-const Form = () => {
+const data = [
+  {
+    priorAuthorization: "Required",
+    procedureService: "CT Scan Chest",
+    procedureServiceDescription:
+      "Computed Tomography (CT) Scan of the chest is an imaging procedure that uses X-rays to create detailed pictures of the chest and upper abdomen. It is used to diagnose and monitor various conditions such as infections, lung diseases, and tumors.",
+    insurer: "Aetna",
+    title: "71260 - CT scan, chest; with contrast material(s)",
+    dateOriginalEffective: "05/20/12",
+    revised: "08/15/23",
+  },
+  {
+    priorAuthorization: "Required",
+    procedureService: "CT Scan Chest",
+    procedureServiceDescription:
+      "Computed Tomography (CT) Scan of the chest is an imaging procedure that uses X-rays to create detailed pictures of the chest and upper abdomen. It is used to diagnose and monitor various conditions such as infections, lung diseases, and tumors.",
+    insurer: "Aetna",
+    title: "71260 - CT scan, chest; with contrast material(s)",
+    dateOriginalEffective: "05/20/12",
+    revised: "08/15/23",
+  },
+  {
+    priorAuthorization: "Non Required",
+    procedureService: "Ultrasound Abdomen Complete",
+    procedureServiceDescription:
+      "Abdominal ultrasound is a noninvasive diagnostic test that uses high-frequency sound waves to create images of the organs and structures within the abdomen. It is used to diagnose a variety of conditions affecting organs such as the liver, gallbladder, pancreas, and kidneys.",
+    insurer: "Cigna",
+    title: "76700 - Ultrasound, abdominal, complete",
+    dateOriginalEffective: "01/10/11",
+    revised: "07/10/23",
+  },
+  {
+    priorAuthorization: "Required",
+    procedureService: "Echocardiogram",
+    procedureServiceDescription:
+      "An echocardiogram is an ultrasound of the heart. It is used to assess the structure and function of the heart, including the chambers, valves, and major blood vessels. It is particularly useful in diagnosing heart diseases such as valve disorders and cardiomyopathies.",
+    insurer: "United Health Care",
+    title: "93306 - Echocardiography, transthoracic; complete",
+    dateOriginalEffective: "03/25/14",
+    revised: "06/20/23",
+  },
+  {
+    priorAuthorization: "Required",
+    procedureService: "MRI Spine Cervical",
+    procedureServiceDescription:
+      "Magnetic Resonance Imaging (MRI) of the cervical spine is used to assess the vertebrae in the neck, the spinal cord, and the surrounding tissues. It is typically used for the evaluation of spinal cord compression, disc herniation, and other spinal pathologies.",
+    insurer: "Humana",
+    title: "72141 - MRI, cervical spine; without contrast material(s)",
+    dateOriginalEffective: "09/15/16",
+    revised: "10/05/23",
+  },
+  {
+    priorAuthorization: "Non Required",
+    procedureService: "X-ray Chest",
+    procedureServiceDescription:
+      "Chest X-rays are a common imaging test used to view the lungs, heart, and chest wall. They are used to diagnose a range of conditions, including infections, lung diseases, and heart conditions.",
+    insurer: "Blue Cross Blue Shield",
+    title: "71045 - X-ray, chest; single view",
+    dateOriginalEffective: "02/20/10",
+    revised: "04/22/23",
+  },
+];
+
+const Form = ({ onCheck }) => {
+  const [insuranceCompany, setInsuranceCompany] = useState("");
+  const [procedureCode, setProcedureCode] = useState("");
+  const [fields, setFields] = useState([1]);
+  const [error, setError] = useState("");
+
+  const handleAddField = () => {
+    setFields([...fields, fields.length + 1]);
+  };
+
+  const handleRemoveField = (index) => {
+    if (fields.length > 1) {
+      setFields(fields.filter((_, i) => i !== index));
+    }
+  };
+
+  const handleCheck = () => {
+    const filterData = data.filter(
+      (item) => item.insurer.toLowerCase() === insuranceCompany.toLowerCase()
+    );
+    onCheck(filterData);
+  };
+
   return (
     <FormContainer
       sx={{
@@ -38,77 +128,59 @@ const Form = () => {
         },
       }}
     >
-      <Typography variant="subtitle1" sx={{ fontWeight: 600, color: "primary.main", fontSize: 18 }}>
-        Insurance Company
-      </Typography>
-      <Typography variant="subtitle1" sx={{ fontSize: 16, color: "#15143966" }}>
-        Enter the insurance Company Name
-      </Typography>
-      <TextField
-        fullWidth
-        placeholder="Florida Blue"
-        variant="outlined"
-        sx={{
-          mb: 1,
-          mt: 1,
-          "& .MuiOutlinedInput-root": {
-            borderRadius: "50px",
-          },
-          "& .MuiOutlinedInput-input": {
-            paddingTop: "8px",
-            paddingBottom: "8px",
-          },
-        }}
+      <Heading variant="textHeading">Insurance Company</Heading>
+      <Heading variant="text">Enter the insurance Company Name</Heading>
+      <InputText
+        placeholder="Company Name"
+        name="insuranceCompany"
+        value={insuranceCompany}
+        onChange={(e) => setInsuranceCompany(e.target.value)}
       />
-      <Typography
-        variant="subtitle1"
-        sx={{ fontWeight: 600, color: "primary.main", mt: 3, fontSize: 18 }}
-      >
+
+      <Heading variant="textHeading" sx={{ mt: 2 }}>
         Procedure Code
-      </Typography>
-      <Typography variant="subtitle1" sx={{ fontSize: 16, color: "#15143966" }}>
+      </Heading>
+      <Heading variant="text">
         You can type the procedure code your doctor will use to bill for the planned service or
         item. You can also type part of the code&apos;s description to search, for example type
         &quot;tonsil&quot; to find &quot;Removal of tonsils.&quot;
-      </Typography>
-      <TextField
-        fullWidth
-        placeholder="99241 – Office Consultation"
-        variant="outlined"
-        sx={{
-          mb: 1,
-          mt: 1,
-          "& .MuiOutlinedInput-root": {
-            borderRadius: "50px",
-          },
-          "& .MuiOutlinedInput-input": {
-            paddingTop: "8px",
-            paddingBottom: "8px",
-          },
-        }}
-      />
+      </Heading>
+
+      {fields.map((field, index) => (
+        <InputTextMultiple
+          key={index}
+          index={index}
+          name="procedureCode"
+          value={procedureCode}
+          onChange={(e) => setProcedureCode(e.target.value)}
+          handleRemoveField={handleRemoveField}
+          placeholder={"Enter Procedure Code"}
+          totalFields={fields.length}
+        />
+      ))}
 
       <Box sx={{ display: "inline-flex", alignItems: "center", paddingY: 3 }}>
         <AddCircleOutlineIcon sx={{ mr: 1, color: "secondary.main" }} />
-        <Link href="#" sx={{ display: "block", color: "secondary.main" }}>
+        <Link
+          sx={{
+            display: "block",
+            color: "secondary.main",
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            handleAddField();
+          }}
+        >
           Add another Procedure Code
         </Link>
       </Box>
 
       <Grid container justifyContent="flex-end">
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{
-            textTransform: "capitalize",
-            fontWeight: "500",
-            fontSize: "16px",
-            borderRadius: "100px",
-            width: { xs: "100%", sm: "auto" },
-          }}
-        >
+        <Buttons variant="check" onClick={handleCheck}>
           Check
-        </Button>
+        </Buttons>
       </Grid>
     </FormContainer>
   );

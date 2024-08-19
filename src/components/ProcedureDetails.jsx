@@ -1,132 +1,150 @@
 "use client";
-import { Typography, Button, Box, Paper, Grid, Divider, Chip } from "@mui/material";
+import { Button, Box, Paper, Grid, Chip, useTheme } from "@mui/material";
 import { styled } from "@mui/system";
+import Heading from "./Heading";
 
 const FormContainer = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   paddingTop: theme.spacing(6),
-  maxWidth: 600,
+  maxWidth: 787,
   margin: "0 auto",
 }));
 
-const ProcedureDetails = () => {
+const ProcedureDetails = ({
+  title,
+  priorAuthorization,
+  procedureService,
+  procedureServiceDescription,
+  insurer,
+  dateOriginalEffective,
+  revised,
+}) => {
+  const theme = useTheme();
   return (
-    <FormContainer>
-      <Paper elevation={0}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography
-              variant="h6"
-              gutterBottom
-              sx={{ textAlign: "left", fontWeight: "600", fontSize: "25px" }}
-            >
-              70544 – Magnetic resonance angiography, head; <br /> without contrast material(s)
-            </Typography>
+    <>
+      <FormContainer>
+        <Paper elevation={0}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Heading variant="main" sx={{ textAlign: "left" }}>
+                {title}
+              </Heading>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Heading variant="textHeading">Prior Authorization</Heading>
+              <Box sx={{ mb: 3, mt: 1, textAlign: "left", color: "#25DAC5" }}>
+                <Chip
+                  label={priorAuthorization}
+                  sx={{
+                    fontWeight: 700,
+                    backgroundColor: priorAuthorization == "Non Required" ? "#25DAC5" : "#E93A7D",
+                    textTransform: "uppercase",
+                    color: "white",
+                    fontSize: "14px",
+                    letterSpacing: "2px",
+                  }}
+                />
+              </Box>
+            </Grid>
+
+            <Grid container spacing={{ xs: 2, md: 10 }} sx={{ paddingLeft: theme.spacing(3) }}>
+              <Grid item xs={12} md={8} sx={{ order: { xs: 2, md: 1 } }}>
+                <Heading variant="textHeading" sx={{ mt: 3 }}>
+                  Procedure/Service
+                </Heading>
+                <Heading variant="text">{procedureService}</Heading>
+
+                <Heading variant="textHeading" sx={{ mt: 3 }}>
+                  Procedure/Service Description
+                </Heading>
+                <Heading variant="text">{procedureServiceDescription}</Heading>
+              </Grid>
+
+              <Grid item xs={12} md={4} sx={{ order: { xs: 1, md: 2 } }}>
+                <Heading variant="textHeading" sx={{ mt: 3 }}>
+                  Insurer
+                </Heading>
+                <Heading variant="text">{insurer}</Heading>
+
+                <Heading variant="textHeading" sx={{ mt: 3 }}>
+                  Date Original Effective
+                </Heading>
+                <Heading variant="text">{dateOriginalEffective}</Heading>
+
+                <Heading variant="textHeading" sx={{ mt: 3 }}>
+                  Revised
+                </Heading>
+                <Heading variant="text">{revised}</Heading>
+              </Grid>
+            </Grid>
+
+            {/* <Grid item xs={12} sx={{ mt: 4 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                  gap: 2,
+                  flexDirection: {
+                    xs: "column",
+                    sm: "column",
+                    md: "row",
+                  },
+                  alignItems: {
+                    xs: "stretch",
+                    sm: "stretch",
+                    md: "flex-start",
+                  },
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    textTransform: "capitalize",
+                    fontWeight: "500",
+                    fontSize: "16px",
+                    borderRadius: "100px",
+                    px: 4,
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "auto",
+                      lg: "auto",
+                    },
+                  }}
+                >
+                  Print
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  sx={{
+                    textTransform: "capitalize",
+                    fontWeight: "500",
+                    fontSize: "16px",
+                    borderRadius: "100px",
+                    border: "2px solid",
+                    px: 4,
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "auto",
+                      lg: "auto",
+                    },
+                    "&:hover": {
+                      border: "2px solid",
+                    },
+                  }}
+                >
+                  Save
+                </Button>
+              </Box>
+            </Grid> */}
           </Grid>
-
-          <Grid item xs={12}>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{ textAlign: "left", fontWeight: "600", mr: 2 }}
-            >
-              Procedure/Service
-            </Typography>
-            <Box sx={{ mb: 3, textAlign: "left", mr: 2 }}>
-              <Chip label="NOT REQUIRED" color="success" sx={{ fontWeight: "bold" }} />
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={8}>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{ textAlign: "left", fontWeight: "600" }}
-            >
-              Procedure/Service
-            </Typography>
-            <Typography variant="body2" sx={{ textAlign: "left" }}>
-              Magnetic Resonance Angiography (MRA) Brain (Head)
-            </Typography>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{ textAlign: "left", fontWeight: "600" }}
-            >
-              Insurer
-            </Typography>
-            <Typography variant="body2" sx={{ textAlign: "left" }}>
-              Florida Blue
-            </Typography>
-          </Grid>
-
-          {/* <Grid item xs={12}>
-            <Divider sx={{ my: 2 }} />
-          </Grid> */}
-
-          <Grid item xs={12} md={8}>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{ textAlign: "left", fontWeight: "600", mr: 3 }}
-            >
-              Procedure/Service Description
-            </Typography>
-            <Typography variant="body2" gutterBottom sx={{ textAlign: "left", mr: 2 }}>
-              Magnetic resonance angiography (MRA) is a noninvasive imaging technology used for the
-              evaluation and imaging of intracranial vascular disease. Magnetic resonance
-              angiography (MRA) or magnetic resonance venography (MRV) may be used as a first-line
-              investigation of intracranial vascular disease. It is particularly useful in patients
-              who are sensitive to the contrast agent (gadolinium) that may be used with MRA/MRV to
-              enable visualization of a body system or body structure and may be used in individuals
-              who have a history of contrast allergy and who are at high risk of kidney failure.
-            </Typography>
-          </Grid>
-
-          <Grid item xs={12} md={4} sx={{ pl: 2 }}>
-            <div>
-              <Typography variant="subtitle1" gutterBottom sx={{ textAlign: "left", mt: 2 }}>
-                Date Original Effective
-              </Typography>
-              <Typography variant="body2" sx={{ textAlign: "left", mb: 2 }}>
-                11/15/13
-              </Typography>
-            </div>
-
-            <div sx={{ mt: 4 }}>
-              <Typography variant="subtitle1" gutterBottom sx={{ textAlign: "left", mt: 4 }}>
-                Revised
-              </Typography>
-              <Typography variant="body2" sx={{ textAlign: "left", mb: 2 }}>
-                09/30/23
-              </Typography>
-            </div>
-          </Grid>
-
-          <Grid item xs={12} sx={{ mt: 4 }}>
-            <Box sx={{ display: "flex", justifyContent: "end", gap: 2 }}>
-              <Button variant="contained" color="primary" sx={{ borderRadius: 25, px: 4 }}>
-                Print
-              </Button>
-              <Button variant="outlined" color="primary" sx={{ borderRadius: 25, px: 4 }}>
-                Save
-              </Button>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} sx={{ mt: 2 }}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography variant="body2" color="primary" sx={{ cursor: "pointer" }}>
-                ↑ Back to Top
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </Paper>
-    </FormContainer>
+        </Paper>
+      </FormContainer>
+    </>
   );
 };
 

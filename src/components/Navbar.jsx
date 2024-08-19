@@ -11,12 +11,12 @@ import {
   List,
   ListItem,
   ListItemText,
-  Button,
   Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
+import Buttons from "./Button";
 
 const navItems = ["Tour", "Prices", "About", "F.A.Q.", "Support"];
 
@@ -33,7 +33,7 @@ const Navbar = () => {
       <Toolbar
         sx={{ position: "relative", minHeight: "80px !important", paddingX: "6% !important" }}
       >
-        <Typography variant="h5" sx={{ color: theme.palette.primary.main, fontWeight: "bold" }}>
+        <Typography variant="h5" sx={{ color: "primary.main", fontWeight: "bold" }}>
           Name
         </Typography>
 
@@ -51,7 +51,7 @@ const Navbar = () => {
               href="#"
               sx={{
                 mx: 2,
-                color: theme.palette.primary.main,
+                color: "primary.main",
                 textDecoration: "none",
                 fontWeight: 500,
               }}
@@ -62,29 +62,8 @@ const Navbar = () => {
         </Box>
 
         <Box sx={{ ml: "auto", display: { xs: "none", md: "flex" } }}>
-          <Button
-            color="primary"
-            sx={{ ml: 2, textTransform: "capitalize", fontWeight: "600", fontSize: "16px" }}
-          >
-            Login
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            sx={{
-              ml: 2,
-              textTransform: "capitalize",
-              fontWeight: "600",
-              fontSize: "16px",
-              border: "2px solid #EBEAED",
-              borderRadius: "100px",
-              "&:hover": {
-                border: "2px solid",
-              },
-            }}
-          >
-            Sign Up
-          </Button>
+          <Buttons variant="login">Login</Buttons>
+          <Buttons variant="signup">Sign Up</Buttons>
         </Box>
 
         <Box sx={{ display: { xs: "flex", md: "none" }, ml: "auto" }}>
@@ -116,7 +95,7 @@ const Navbar = () => {
                     primary={item}
                     sx={{
                       mx: 2,
-                      color: theme.palette.primary.main,
+                      color: "primary.main",
                       textDecoration: "none",
                       fontSize: "16px",
                       fontWeight: "400",
@@ -131,7 +110,7 @@ const Navbar = () => {
                     <Typography
                       sx={{
                         mx: 2,
-                        color: theme.palette.primary.main,
+                        color: "primary.main",
                         fontWeight: "600",
                         fontSize: "18px",
                       }}
@@ -147,7 +126,7 @@ const Navbar = () => {
                     <Typography
                       sx={{
                         mx: 2,
-                        color: theme.palette.primary.main,
+                        color: "primary.main",
                         fontWeight: "600",
                         fontSize: "18px",
                       }}
