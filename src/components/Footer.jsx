@@ -41,7 +41,8 @@ const Footer = () => {
               key={item}
               href="#"
               sx={{
-                mx: 1,
+                mx: { xs: 1, sm: 4, md: 4, lg: 4 },
+                fontSize: "18px",
                 color: "primary.main",
                 textDecoration: "none",
                 fontWeight: 500,

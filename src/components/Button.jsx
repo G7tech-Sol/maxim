@@ -34,6 +34,7 @@ const buttonStyles = {
     textTransform: "capitalize",
     fontWeight: "600",
     fontSize: "16px",
+    borderRadius: "100px",
     backgroundColor: "transparent",
     color: "primary.main",
     "&:hover": { backgroundColor: "transparent" },
