@@ -1,13 +1,12 @@
 "use client";
-import { Typography, Link, Box, useTheme, Grid, Toolbar } from "@mui/material";
+import { Typography, Link, Box, Grid } from "@mui/material";
 
 const Footer = () => {
-  const theme = useTheme();
   const navItems = ["Tour", "Prices", "About", "F.A.Q.", "Support"];
   return (
     <>
       <Box sx={{ paddingX: "6% !important" }}>
-        <Grid item xs={12} sx={{ paddingY: { xs: 3, md: 4 } }}>
+        <Grid item xs={12}>
           <Box
             sx={{
               textAlign: {
@@ -21,7 +20,7 @@ const Footer = () => {
             <Typography
               variant="body2"
               color="secondary"
-              sx={{ cursor: "pointer", fontWeight: 700 }}
+              sx={{ cursor: "pointer", fontWeight: 700, mt: 5 }}
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
@@ -31,7 +30,12 @@ const Footer = () => {
           </Box>
         </Grid>
 
-        <Box sx={{ textAlign: "center" }}>
+        <Box
+          sx={{
+            textAlign: "center",
+            paddingTop: { xs: "110px", md: "150px", lg: "150px" },
+          }}
+        >
           {navItems.map((item) => (
             <Link
               key={item}
@@ -46,7 +50,7 @@ const Footer = () => {
               {item}
             </Link>
           ))}
-          <Typography variant="caption" display="block" sx={{ m: 2, color: "#15143966" }}>
+          <Typography variant="caption" display="block" sx={{ m: 4, color: "#15143966" }}>
             © 2024 Designmodo. All rights reserved.
           </Typography>
         </Box>

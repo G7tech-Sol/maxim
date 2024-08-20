@@ -22,12 +22,12 @@ const FormContainer = styled(Box)(({ theme }) => ({
 
 const data = [
   {
-    priorAuthorization: "Required",
+    priorAuthorization: "Not Required",
     procedureService: "CT Scan Chest",
     procedureServiceDescription:
       "Computed Tomography (CT) Scan of the chest is an imaging procedure that uses X-rays to create detailed pictures of the chest and upper abdomen. It is used to diagnose and monitor various conditions such as infections, lung diseases, and tumors.",
-    insurer: "Aetna",
-    title: "71260 - CT scan, chest; with contrast material(s)",
+    insurer: "Florida Blue",
+    title: "70544 - Magnetic resonance angiography, head; without contrast material(s)",
     dateOriginalEffective: "05/20/12",
     revised: "08/15/23",
   },
@@ -36,13 +36,13 @@ const data = [
     procedureService: "CT Scan Chest",
     procedureServiceDescription:
       "Computed Tomography (CT) Scan of the chest is an imaging procedure that uses X-rays to create detailed pictures of the chest and upper abdomen. It is used to diagnose and monitor various conditions such as infections, lung diseases, and tumors.",
-    insurer: "Aetna",
-    title: "71260 - CT scan, chest; with contrast material(s)",
+    insurer: "Florida Blue",
+    title: "70545 - Magnetic resonance angiography, head",
     dateOriginalEffective: "05/20/12",
     revised: "08/15/23",
   },
   {
-    priorAuthorization: "Non Required",
+    priorAuthorization: "Not Required",
     procedureService: "Ultrasound Abdomen Complete",
     procedureServiceDescription:
       "Abdominal ultrasound is a noninvasive diagnostic test that uses high-frequency sound waves to create images of the organs and structures within the abdomen. It is used to diagnose a variety of conditions affecting organs such as the liver, gallbladder, pancreas, and kidneys.",
@@ -72,7 +72,7 @@ const data = [
     revised: "10/05/23",
   },
   {
-    priorAuthorization: "Non Required",
+    priorAuthorization: "Not Required",
     procedureService: "X-ray Chest",
     procedureServiceDescription:
       "Chest X-rays are a common imaging test used to view the lungs, heart, and chest wall. They are used to diagnose a range of conditions, including infections, lung diseases, and heart conditions.",
@@ -87,7 +87,6 @@ const Form = ({ onCheck }) => {
   const [insuranceCompany, setInsuranceCompany] = useState("");
   const [procedureCode, setProcedureCode] = useState("");
   const [fields, setFields] = useState([1]);
-  const [error, setError] = useState("");
 
   const handleAddField = () => {
     setFields([...fields, fields.length + 1]);
@@ -111,19 +110,25 @@ const Form = ({ onCheck }) => {
       sx={{
         border: "2px solid #EBEAED",
         borderRadius: "10px",
-        mt: 5,
+        marginTop: {
+          xs: "30px",
+          sm: 4,
+          md: "50px",
+          lg: "50px",
+          xl: 8,
+        },
         paddingX: {
           xs: 3,
           sm: 4,
-          md: 6,
-          lg: 7,
+          md: "64px",
+          lg: "64px",
           xl: 8,
         },
         paddingY: {
           xs: 3,
           sm: 4,
-          md: 6,
-          lg: 7,
+          md: "44px",
+          lg: "44px",
           xl: 8,
         },
       }}

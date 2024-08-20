@@ -5,9 +5,9 @@ const headingStyles = {
   heroHeading: {
     fontSize: {
       xs: "32px",
-      sm: "38px",
-      md: "44px",
-      lg: "52px",
+      sm: "40px",
+      md: "52px",
+      lg: "58px",
       xl: "60px",
     },
     fontWeight: 600,
@@ -16,7 +16,7 @@ const headingStyles = {
     lineHeight: {
       xs: "42px",
       sm: "50px",
-      md: "60px",
+      md: "70px",
       lg: "72px",
       xl: "80px",
     },
@@ -24,9 +24,15 @@ const headingStyles = {
   },
 
   heroDesc: {
-    marginY: 5,
+    marginY: {
+      xs: "25px",
+      sm: "32px",
+      md: "40px",
+      lg: "40px",
+      xl: "45px",
+    },
     textAlign: "center",
-    paddingX: { xs: "5%", sm: "15%" },
+    paddingX: { xs: "5%", sm: "12%", lg: "15%" },
   },
 
   main: {
@@ -51,6 +57,12 @@ const headingStyles = {
   text: {
     fontSize: 16,
     color: "text.primary",
+    textAlign: "left",
+  },
+
+  badgeDesc: {
+    fontSize: 16,
+    color: "primary.main",
     textAlign: "left",
   },
 };
