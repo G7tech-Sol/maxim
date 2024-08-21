@@ -5,8 +5,8 @@ import { styled } from "@mui/system";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Heading from "./Heading";
 import Buttons from "./Button";
-import InputText from "./InputText";
 import InputTextMultiple from "./InputTextMultiple";
+import InputAutofill from "./InputAutofill";
 
 const FormContainer = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
@@ -83,6 +83,19 @@ const data = [
   },
 ];
 
+const dropdownOptions = [
+  {
+    value: "Florida Blue",
+    label: "Florida Blue",
+    image: "/assets/images/florida-blue.png",
+  },
+  {
+    value: "First Family Insurance",
+    label: "First Family Insurance",
+    image: "/assets/images/first-family-insurance.png",
+  },
+];
+
 const Form = ({ onCheck }) => {
   const [insuranceCompany, setInsuranceCompany] = useState("");
   const [procedureCode, setProcedureCode] = useState("");
@@ -104,6 +117,12 @@ const Form = ({ onCheck }) => {
     );
     onCheck(filterData);
   };
+
+  const handleChange = (event, newValue) => {
+    setInsuranceCompany(newValue);
+  };
+
+  const options = ["Option 1", "Option 2", "Option 3"];
 
   return (
     <FormContainer
@@ -135,11 +154,13 @@ const Form = ({ onCheck }) => {
     >
       <Heading variant="textHeading">Insurance Company</Heading>
       <Heading variant="text">Enter the insurance Company Name</Heading>
-      <InputText
-        placeholder="Company Name"
+
+      <InputAutofill
+        placeholder="Search Company"
         name="insuranceCompany"
         value={insuranceCompany}
-        onChange={(e) => setInsuranceCompany(e.target.value)}
+        onChange={handleChange}
+        options={dropdownOptions}
       />
 
       <Heading variant="textHeading" sx={{ mt: 2 }}>
