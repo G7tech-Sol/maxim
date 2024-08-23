@@ -35,6 +35,7 @@ const headingStyles = {
     fontSize: "16px",
     fontWeight: 400,
     lineHeight: "26px",
+    color: "text.main",
     paddingX: { xs: "5%", sm: "12%", lg: "15%" },
   },
 
@@ -67,7 +68,7 @@ const headingStyles = {
 
   text: {
     fontSize: 16,
-    color: "text.primary",
+    color: "text.main",
     textAlign: "left",
   },
 

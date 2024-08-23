@@ -1,6 +1,6 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import {
   AppBar,
   Toolbar,
@@ -11,18 +11,22 @@ import {
   List,
   ListItem,
   ListItemText,
-  Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CloseIcon from "@mui/icons-material/Close";
 import Buttons from "./Button";
 
-const navItems = ["Tour", "Prices", "About", "F.A.Q.", "Support"];
+const navItems = [
+  { label: "Tour", path: "/tour" },
+  { label: "Prices", path: "/prices" },
+  { label: "About", path: "/about" },
+  { label: "F.A.Q.", path: "/faq" },
+  { label: "Support", path: "/support" },
+];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const theme = useTheme();
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -31,39 +35,49 @@ const Navbar = () => {
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar
-        sx={{ position: "relative", minHeight: "80px !important", paddingX: "6% !important" }}
+        sx={{
+          position: "relative",
+          minHeight: "80px !important",
+          paddingX: "6% !important",
+        }}
       >
-        <Typography variant="h5" sx={{ color: "primary.main", fontWeight: "bold" }}>
-          Name
-        </Typography>
+        <Link href="/" passHref>
+          <Typography variant="h5" sx={{ color: "primary.main", fontWeight: "bold" }}>
+            Name
+          </Typography>
+        </Link>
 
         <Box
           sx={{
             position: "absolute",
             left: "50%",
             transform: "translateX(-50%)",
-            display: { xs: "none", md: "block" },
+            display: { xs: "none", md: "flex" },
           }}
         >
           {navItems.map((item) => (
-            <Link
-              key={item}
-              href="#"
-              sx={{
-                mx: 2,
-                color: "primary.main",
-                textDecoration: "none",
-                fontWeight: 500,
-              }}
-            >
-              {item}
+            <Link key={item.label} href={item.path} passHref>
+              <Box
+                sx={{
+                  mx: 2,
+                  color: "primary.main",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  display: "inline-block",
+                }}
+              >
+                <Typography>{item.label}</Typography>
+              </Box>
             </Link>
           ))}
         </Box>
 
         <Box sx={{ ml: "auto", display: { xs: "none", md: "flex" } }}>
           <Buttons variant="login">Login</Buttons>
-          <Buttons variant="signup">Sign Up</Buttons>
+          <Buttons variant="greyButton" sx={{ ml: 2 }}>
+            Sign Up
+          </Buttons>
         </Box>
 
         <Box sx={{ display: { xs: "flex", md: "none" }, ml: "auto" }}>
@@ -90,52 +104,64 @@ const Navbar = () => {
             </IconButton>
             <List sx={{ mt: 4 }}>
               {navItems.map((item) => (
-                <ListItem button key={item}>
+                <Link key={item.label} href={item.path} passHref>
+                  <ListItem button component="a">
+                    <ListItemText
+                      primary={
+                        <Typography
+                          sx={{
+                            mx: 2,
+                            color: "primary.main",
+                            fontWeight: "400",
+                            fontSize: "16px",
+                            textDecoration: "none !important",
+                          }}
+                        >
+                          {item.label}
+                        </Typography>
+                      }
+                    />
+                  </ListItem>
+                </Link>
+              ))}
+              <Link href="/login" passHref>
+                <ListItem button component="a">
                   <ListItemText
-                    primary={item}
-                    sx={{
-                      mx: 2,
-                      color: "primary.main",
-                      textDecoration: "none",
-                      fontSize: "16px",
-                      fontWeight: "400",
-                    }}
+                    primary={
+                      <Typography
+                        sx={{
+                          mx: 2,
+                          color: "primary.main",
+                          fontWeight: "600",
+                          fontSize: "18px",
+                          textDecoration: "none !important",
+                        }}
+                      >
+                        Login
+                      </Typography>
+                    }
                   />
                 </ListItem>
-              ))}
-
-              <ListItem button>
-                <ListItemText
-                  primary={
-                    <Typography
-                      sx={{
-                        mx: 2,
-                        color: "primary.main",
-                        fontWeight: "600",
-                        fontSize: "18px",
-                      }}
-                    >
-                      Login
-                    </Typography>
-                  }
-                />
-              </ListItem>
-              <ListItem button>
-                <ListItemText
-                  primary={
-                    <Typography
-                      sx={{
-                        mx: 2,
-                        color: "primary.main",
-                        fontWeight: "600",
-                        fontSize: "18px",
-                      }}
-                    >
-                      Sign Up
-                    </Typography>
-                  }
-                />
-              </ListItem>
+              </Link>
+              <Link href="/signup" passHref>
+                <ListItem button component="a">
+                  <ListItemText
+                    primary={
+                      <Typography
+                        sx={{
+                          mx: 2,
+                          color: "primary.main",
+                          fontWeight: "600",
+                          fontSize: "18px",
+                          textDecoration: "none !important",
+                        }}
+                      >
+                        Sign Up
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+              </Link>
             </List>
           </Box>
         </Drawer>

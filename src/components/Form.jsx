@@ -122,7 +122,7 @@ const Form = ({ onCheck }) => {
     setInsuranceCompany(newValue);
   };
 
-  const options = ["Option 1", "Option 2", "Option 3"];
+  const options = ["Florida Blue", "First Family Insurance"];
 
   return (
     <FormContainer
@@ -160,7 +160,7 @@ const Form = ({ onCheck }) => {
         name="insuranceCompany"
         value={insuranceCompany}
         onChange={handleChange}
-        options={dropdownOptions}
+        options={options}
       />
 
       <Heading variant="textHeading" sx={{ mt: 2 }}>

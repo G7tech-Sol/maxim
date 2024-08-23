@@ -1,4 +1,4 @@
-import { Box, TextField, IconButton, Typography } from "@mui/material";
+import { Box, TextField, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const InputTextMultiple = ({
@@ -11,7 +11,15 @@ const InputTextMultiple = ({
   totalFields,
 }) => {
   return (
-    <Box sx={{ position: "relative", mb: 1, mt: 1, pr: totalFields > 1 ? 5 : 0, width: "100%" }}>
+    <Box
+      sx={{
+        position: "relative",
+        mb: 1,
+        mt: 1,
+        pr: totalFields > 1 ? 5 : 0,
+        width: "100%",
+      }}
+    >
       <TextField
         fullWidth
         placeholder={placeholder}
@@ -22,13 +30,31 @@ const InputTextMultiple = ({
         sx={{
           "& .MuiOutlinedInput-root": {
             borderRadius: "50px",
+            "& fieldset": {
+              border: "2px solid #EBEAED",
+            },
+            "&:hover fieldset": {
+              border: "2px solid #482BE7",
+            },
+            "&.Mui-focused fieldset": {
+              border: "2px solid #482BE7",
+            },
           },
           "& .MuiOutlinedInput-input": {
-            fontWeight: "500",
             color: "primary.main",
-            paddingTop: "8px",
-            paddingBottom: "8px",
+            fontWeight: "500",
+            paddingY: "13px",
+            paddingLeft: "16px",
             paddingRight: "42px",
+            "&::placeholder": {
+              color: "#15143966",
+            },
+          },
+          "&:hover .MuiOutlinedInput-input::placeholder": {
+            color: "#15143966",
+          },
+          "&.Mui-focused .MuiOutlinedInput-input::placeholder": {
+            color: "primary.main",
           },
         }}
       />
@@ -50,4 +76,5 @@ const InputTextMultiple = ({
     </Box>
   );
 };
+
 export default InputTextMultiple;

@@ -13,7 +13,6 @@ const FormContainer = styled(Box)(({ theme }) => ({
 
 const ProcedureDetails = ({
   title,
-  priorAuthorization,
   procedureService,
   procedureServiceDescription,
   insurer,
@@ -34,7 +33,7 @@ const ProcedureDetails = ({
 
             <Grid item xs={12}>
               <Heading variant="textHeading">Prior Authorization</Heading>
-              <Badge priorAuthorization={priorAuthorization} />
+              <Badge variant="required2" />
             </Grid>
 
             <Grid container spacing={{ xs: 1, md: 10 }} sx={{ paddingLeft: theme.spacing(3) }}>

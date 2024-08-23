@@ -14,8 +14,7 @@ const buttonStyles = {
     "&:hover": { backgroundColor: "secondary.main" },
   },
 
-  signup: {
-    ml: 2,
+  greyButton: {
     textTransform: "capitalize",
     fontWeight: "600",
     fontSize: "16px",
@@ -25,7 +24,39 @@ const buttonStyles = {
     px: 2,
     color: "primary.main",
     "&:hover": {
-      border: "2px solid",
+      border: "2px solid #EBEAED",
+      backgroundColor: "#F5F5F5",
+    },
+  },
+
+  coloredButton: {
+    textTransform: "capitalize",
+    fontWeight: "600",
+    fontSize: "16px",
+    border: "2px solid #482BE7",
+    borderRadius: "100px",
+    backgroundColor: "transparent",
+    px: 2,
+    color: "#482BE7",
+    "&:hover": {
+      border: "2px solid #4D25BD",
+      color: "#4D25BD",
+      backgroundColor: "transparent",
+    },
+  },
+
+  filledButton: {
+    textTransform: "capitalize",
+    fontWeight: "600",
+    fontSize: "16px",
+    border: "2px solid #482BE7",
+    borderRadius: "100px",
+    backgroundColor: "#482BE7",
+    px: 2,
+    color: "white",
+    "&:hover": {
+      border: "2px solid #4D25BD",
+      backgroundColor: "#4D25BD",
     },
   },
 

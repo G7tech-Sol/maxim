@@ -14,6 +14,8 @@ export default function Home() {
 
   const handleCheck = (filteredData) => {
     if (filteredData.length > 0) {
+      console.log(filteredData);
+
       setSelectedProcedure(filteredData);
     }
   };
@@ -58,7 +60,6 @@ export default function Home() {
           <ProcedureDetails
             key={index}
             title={procedure.title}
-            priorAuthorization={procedure.priorAuthorization}
             procedureService={procedure.procedureService}
             procedureServiceDescription={procedure.procedureServiceDescription}
             insurer={procedure.insurer}

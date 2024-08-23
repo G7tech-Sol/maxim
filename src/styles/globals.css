@@ -18,3 +18,7 @@ span,
 button {
   font-family: "DM Sans" !important;
 }
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
