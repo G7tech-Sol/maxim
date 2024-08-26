@@ -1,5 +1,6 @@
 "use client";
 import { Typography, Link, Box, Grid } from "@mui/material";
+import BackToTop from "./BackToTop";
 
 const Footer = () => {
   const navItems = ["Tour", "Prices", "About", "F.A.Q.", "Support"];
@@ -7,27 +8,7 @@ const Footer = () => {
     <>
       <Box sx={{ paddingX: "6% !important" }}>
         <Grid item xs={12}>
-          <Box
-            sx={{
-              textAlign: {
-                xs: "center",
-                sm: "center",
-                md: "right",
-                lg: "right",
-              },
-            }}
-          >
-            <Typography
-              variant="body2"
-              color="secondary"
-              sx={{ cursor: "pointer", fontWeight: 700, mt: 5 }}
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              ↑ Back to Top
-            </Typography>
-          </Box>
+          <BackToTop variant="noBordered" sx={{ mt: 5 }} />
         </Grid>
 
         <Box

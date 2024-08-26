@@ -7,6 +7,7 @@ import Header from "@/components/Navbar";
 import InputText from "@/components/InputText";
 import InputAutofill from "@/components/InputAutofill";
 import Buttons from "@/components/Button";
+import BackToTop from "@/components/BackToTop";
 
 const Page = () => {
   const options = ["Florida Blue", "First Family Insurance"];
@@ -85,6 +86,20 @@ const Page = () => {
             onChange={handleChange}
             options={options}
           />
+        </Box>
+
+        <Box sx={{ mb: 6 }}>
+          <Typography variant="h5" gutterBottom sx={{ mb: 4 }}>
+            Back To Top
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item>
+              <BackToTop variant="noBordered" />
+            </Grid>
+            <Grid item>
+              <BackToTop variant="bordered" />
+            </Grid>
+          </Grid>
         </Box>
       </Box>
       <Footer />
